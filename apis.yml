@@ -35,6 +35,8 @@ apis:
         url: https://learn.microsoft.com/en-us/rest/api/sql/
       - type: Authentication
         url: https://learn.microsoft.com/en-us/azure/active-directory/develop/authentication-flows-app-scenarios
+      - url: openapi/microsoft-azure-sql-database-openapi.yml
+        type: OpenAPI
 common:
   - type: Portal
     url: https://portal.azure.com/
