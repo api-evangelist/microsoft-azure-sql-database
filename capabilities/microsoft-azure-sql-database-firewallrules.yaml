@@ -1,0 +1,137 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Azure SQL Database REST API — FirewallRules
+  description: 'Azure SQL Database REST API — FirewallRules. 3 operations. Lead operation: List firewall rules by server.
+    Self-contained Naftiko capability covering one Microsoft Azure Sql Database business surface.'
+  tags:
+  - Microsoft Azure Sql Database
+  - FirewallRules
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    MICROSOFT_AZURE_SQL_DATABASE_API_KEY: MICROSOFT_AZURE_SQL_DATABASE_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: microsoft-azure-sql-database-firewallrules
+    baseUri: https://management.azure.com
+    description: Azure SQL Database REST API — FirewallRules business capability. Self-contained, no shared references.
+    resources:
+    - name: subscriptions-subscriptionId-resourceGroups-resourceGroupName-providers-Microsof
+      path: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/firewallRules
+      operations:
+      - name: listfirewallrulesbyserver
+        method: GET
+        description: List firewall rules by server
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: subscriptions-subscriptionId-resourceGroups-resourceGroupName-providers-Microsof
+      path: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/firewallRules/{firewallRuleName}
+      operations:
+      - name: createorupdatefirewallrule
+        method: PUT
+        description: Create or update firewall rule
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: deletefirewallrule
+        method: DELETE
+        description: Delete firewall rule
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: bearer
+      token: '{{env.MICROSOFT_AZURE_SQL_DATABASE_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: microsoft-azure-sql-database-firewallrules-rest
+    port: 8080
+    description: REST adapter for Azure SQL Database REST API — FirewallRules. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/subscriptions/{subscriptionid}/resourcegroups/{resourcegroupname}/providers/microsoft-sql/servers/{servername}/firewallrules
+      name: subscriptions-subscriptionid-resourcegroups-resourcegroupname-providers-microsof
+      description: REST surface for subscriptions-subscriptionId-resourceGroups-resourceGroupName-providers-Microsof.
+      operations:
+      - method: GET
+        name: listfirewallrulesbyserver
+        description: List firewall rules by server
+        call: microsoft-azure-sql-database-firewallrules.listfirewallrulesbyserver
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/subscriptions/{subscriptionid}/resourcegroups/{resourcegroupname}/providers/microsoft-sql/servers/{servername}/firewallrules/{firewallrulename}
+      name: subscriptions-subscriptionid-resourcegroups-resourcegroupname-providers-microsof
+      description: REST surface for subscriptions-subscriptionId-resourceGroups-resourceGroupName-providers-Microsof.
+      operations:
+      - method: PUT
+        name: createorupdatefirewallrule
+        description: Create or update firewall rule
+        call: microsoft-azure-sql-database-firewallrules.createorupdatefirewallrule
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deletefirewallrule
+        description: Delete firewall rule
+        call: microsoft-azure-sql-database-firewallrules.deletefirewallrule
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: microsoft-azure-sql-database-firewallrules-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Azure SQL Database REST API — FirewallRules. One tool per consumed operation, routed inline
+      through this capability's consumes block.
+    tools:
+    - name: list-firewall-rules-server
+      description: List firewall rules by server
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: microsoft-azure-sql-database-firewallrules.listfirewallrulesbyserver
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-update-firewall-rule
+      description: Create or update firewall rule
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: microsoft-azure-sql-database-firewallrules.createorupdatefirewallrule
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-firewall-rule
+      description: Delete firewall rule
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: microsoft-azure-sql-database-firewallrules.deletefirewallrule
+      outputParameters:
+      - type: object
+        mapping: $.
