@@ -2,12 +2,20 @@
   "repo": "microsoft-azure-sql-database",
   "feeds": [
     {
-      "source": "https://azure.microsoft.com/en-us/blog/product/azure-sql-database/",
+      "source": "https://azure.microsoft.com/en-us/blog/product/azure-sql-database/feed/",
       "feed_url": "https://azure.microsoft.com/en-us/blog/product/azure-sql-database/feed/",
-      "title": "Azure SQL Database | Microsoft Azure Blog | Microsoft Azure",
-      "saved": 10
+      "title": "",
+      "saved": 0,
+      "method": "feed"
+    },
+    {
+      "source": "https://support.microsoft.com/",
+      "feed_url": "https://support.microsoft.com/",
+      "title": "",
+      "saved": 0,
+      "method": "none"
     }
   ],
   "post_count": 20,
-  "fetched": "2026-05-17T20:20:35Z"
+  "fetched": "2026-06-01T23:35:02Z"
 }
