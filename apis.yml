@@ -57,7 +57,7 @@ common:
     url: https://azure.microsoft.com/en-us/blog/product/azure-sql-database/
   - type: StackOverflow
     url: https://stackoverflow.com/questions/tagged/azure-sql-database
-  - type: LLMsTxt
+  - type: LlmsText
     url: https://portal.azure.com/llms.txt
 maintainers:
   - FN: Kin Lane
