@@ -35,6 +35,10 @@ apis:
       - url: openapi/microsoft-azure-sql-database-openapi.yml
         type: OpenAPI
 common:
+  - type: DomainSecurity
+    url: security/microsoft-azure-sql-database-domain-security.yml
+  - type: Authentication
+    url: authentication/microsoft-azure-sql-database-authentication.yml
   - type: GitHubOrganization
     url: https://github.com/microsoft
   - type: Portal
