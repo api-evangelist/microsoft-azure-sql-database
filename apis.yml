@@ -35,6 +35,8 @@ apis:
       - url: openapi/microsoft-azure-sql-database-openapi.yml
         type: OpenAPI
 common:
+  - type: AgenticAccess
+    url: agentic-access/microsoft-azure-sql-database-agentic-access.yml
   - type: DomainSecurity
     url: security/microsoft-azure-sql-database-domain-security.yml
   - type: Authentication
