@@ -1,0 +1,114 @@
+openapi: 3.1.0
+info:
+  title: Azure SQL Database REST Databases FirewallRules API
+  description: Minimal OpenAPI definition for the Azure SQL Database management REST API (via Azure Resource Manager) covering servers, databases, elastic pools, firewall rules, and failover groups.
+  version: '2021-11-01'
+  x-generated-from: https://learn.microsoft.com/en-us/rest/api/sql/
+  x-generated-by: claude-crawl-2026-05-08
+servers:
+- url: https://management.azure.com
+  description: Azure Resource Manager
+security:
+- bearerAuth: []
+tags:
+- name: FirewallRules
+paths:
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/firewallRules
+  : parameters:
+    - $ref: '#/components/parameters/SubscriptionId'
+    - $ref: '#/components/parameters/ResourceGroupName'
+    - $ref: '#/components/parameters/ServerName'
+    - $ref: '#/components/parameters/ApiVersion'
+    get:
+      tags:
+      - FirewallRules
+      summary: List firewall rules by server
+      operationId: listFirewallRulesByServer
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericList'
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/firewallRules/{firewallRuleName}
+  : parameters:
+    - $ref: '#/components/parameters/SubscriptionId'
+    - $ref: '#/components/parameters/ResourceGroupName'
+    - $ref: '#/components/parameters/ServerName'
+    - in: path
+      name: firewallRuleName
+      required: true
+      schema:
+        type: string
+    - $ref: '#/components/parameters/ApiVersion'
+    put:
+      tags:
+      - FirewallRules
+      summary: Create or update firewall rule
+      operationId: createOrUpdateFirewallRule
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GenericObject'
+      responses:
+        '200':
+          description: OK
+        '201':
+          description: Created
+    delete:
+      tags:
+      - FirewallRules
+      summary: Delete firewall rule
+      operationId: deleteFirewallRule
+      responses:
+        '200':
+          description: OK
+        '204':
+          description: No Content
+components:
+  schemas:
+    GenericList:
+      type: object
+      properties:
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/GenericObject'
+      additionalProperties: true
+    GenericObject:
+      type: object
+      additionalProperties: true
+  parameters:
+    ResourceGroupName:
+      in: path
+      name: resourceGroupName
+      required: true
+      schema:
+        type: string
+    ServerName:
+      in: path
+      name: serverName
+      required: true
+      schema:
+        type: string
+    ApiVersion:
+      in: query
+      name: api-version
+      required: true
+      schema:
+        type: string
+        default: '2021-11-01'
+    SubscriptionId:
+      in: path
+      name: subscriptionId
+      required: true
+      schema:
+        type: string
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

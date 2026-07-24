@@ -1,0 +1,142 @@
+openapi: 3.1.0
+info:
+  title: Azure SQL Database REST Databases API
+  description: Minimal OpenAPI definition for the Azure SQL Database management REST API (via Azure Resource Manager) covering servers, databases, elastic pools, firewall rules, and failover groups.
+  version: '2021-11-01'
+  x-generated-from: https://learn.microsoft.com/en-us/rest/api/sql/
+  x-generated-by: claude-crawl-2026-05-08
+servers:
+- url: https://management.azure.com
+  description: Azure Resource Manager
+security:
+- bearerAuth: []
+tags:
+- name: Databases
+paths:
+  /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases:
+    parameters:
+    - $ref: '#/components/parameters/SubscriptionId'
+    - $ref: '#/components/parameters/ResourceGroupName'
+    - $ref: '#/components/parameters/ServerName'
+    - $ref: '#/components/parameters/ApiVersion'
+    get:
+      tags:
+      - Databases
+      summary: List databases by server
+      operationId: listDatabasesByServer
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericList'
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}
+  : parameters:
+    - $ref: '#/components/parameters/SubscriptionId'
+    - $ref: '#/components/parameters/ResourceGroupName'
+    - $ref: '#/components/parameters/ServerName'
+    - $ref: '#/components/parameters/DatabaseName'
+    - $ref: '#/components/parameters/ApiVersion'
+    get:
+      tags:
+      - Databases
+      summary: Get database
+      operationId: getDatabase
+      responses:
+        '200':
+          description: OK
+    put:
+      tags:
+      - Databases
+      summary: Create or update database
+      operationId: createOrUpdateDatabase
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GenericObject'
+      responses:
+        '200':
+          description: OK
+        '202':
+          description: Accepted
+    patch:
+      tags:
+      - Databases
+      summary: Update database
+      operationId: updateDatabase
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GenericObject'
+      responses:
+        '200':
+          description: OK
+        '202':
+          description: Accepted
+    delete:
+      tags:
+      - Databases
+      summary: Delete database
+      operationId: deleteDatabase
+      responses:
+        '200':
+          description: OK
+        '202':
+          description: Accepted
+        '204':
+          description: No Content
+components:
+  schemas:
+    GenericList:
+      type: object
+      properties:
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/GenericObject'
+      additionalProperties: true
+    GenericObject:
+      type: object
+      additionalProperties: true
+  parameters:
+    ResourceGroupName:
+      in: path
+      name: resourceGroupName
+      required: true
+      schema:
+        type: string
+    ServerName:
+      in: path
+      name: serverName
+      required: true
+      schema:
+        type: string
+    ApiVersion:
+      in: query
+      name: api-version
+      required: true
+      schema:
+        type: string
+        default: '2021-11-01'
+    DatabaseName:
+      in: path
+      name: databaseName
+      required: true
+      schema:
+        type: string
+    SubscriptionId:
+      in: path
+      name: subscriptionId
+      required: true
+      schema:
+        type: string
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

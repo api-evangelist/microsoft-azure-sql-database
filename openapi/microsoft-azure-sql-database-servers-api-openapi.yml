@@ -1,0 +1,134 @@
+openapi: 3.1.0
+info:
+  title: Azure SQL Database REST Databases Servers API
+  description: Minimal OpenAPI definition for the Azure SQL Database management REST API (via Azure Resource Manager) covering servers, databases, elastic pools, firewall rules, and failover groups.
+  version: '2021-11-01'
+  x-generated-from: https://learn.microsoft.com/en-us/rest/api/sql/
+  x-generated-by: claude-crawl-2026-05-08
+servers:
+- url: https://management.azure.com
+  description: Azure Resource Manager
+security:
+- bearerAuth: []
+tags:
+- name: Servers
+paths:
+  /subscriptions/{subscriptionId}/providers/Microsoft.Sql/servers:
+    parameters:
+    - $ref: '#/components/parameters/SubscriptionId'
+    - $ref: '#/components/parameters/ApiVersion'
+    get:
+      tags:
+      - Servers
+      summary: List servers in subscription
+      operationId: listServers
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericList'
+  /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers:
+    parameters:
+    - $ref: '#/components/parameters/SubscriptionId'
+    - $ref: '#/components/parameters/ResourceGroupName'
+    - $ref: '#/components/parameters/ApiVersion'
+    get:
+      tags:
+      - Servers
+      summary: List servers in resource group
+      operationId: listServersByResourceGroup
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericList'
+  /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}:
+    parameters:
+    - $ref: '#/components/parameters/SubscriptionId'
+    - $ref: '#/components/parameters/ResourceGroupName'
+    - $ref: '#/components/parameters/ServerName'
+    - $ref: '#/components/parameters/ApiVersion'
+    get:
+      tags:
+      - Servers
+      summary: Get server
+      operationId: getServer
+      responses:
+        '200':
+          description: OK
+    put:
+      tags:
+      - Servers
+      summary: Create or update server
+      operationId: createOrUpdateServer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GenericObject'
+      responses:
+        '200':
+          description: OK
+        '202':
+          description: Accepted
+    delete:
+      tags:
+      - Servers
+      summary: Delete server
+      operationId: deleteServer
+      responses:
+        '200':
+          description: OK
+        '202':
+          description: Accepted
+        '204':
+          description: No Content
+components:
+  schemas:
+    GenericList:
+      type: object
+      properties:
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/GenericObject'
+      additionalProperties: true
+    GenericObject:
+      type: object
+      additionalProperties: true
+  parameters:
+    ResourceGroupName:
+      in: path
+      name: resourceGroupName
+      required: true
+      schema:
+        type: string
+    ServerName:
+      in: path
+      name: serverName
+      required: true
+      schema:
+        type: string
+    ApiVersion:
+      in: query
+      name: api-version
+      required: true
+      schema:
+        type: string
+        default: '2021-11-01'
+    SubscriptionId:
+      in: path
+      name: subscriptionId
+      required: true
+      schema:
+        type: string
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
