@@ -1,0 +1,22 @@
+{
+  "provider": "microsoft-azure-sql-database",
+  "sources": [
+    "microsoft-azure-sql-database-databases-api-openapi.yml",
+    "microsoft-azure-sql-database-elasticpools-api-openapi.yml",
+    "microsoft-azure-sql-database-failovergroups-api-openapi.yml",
+    "microsoft-azure-sql-database-firewallrules-api-openapi.yml",
+    "microsoft-azure-sql-database-servers-api-openapi.yml"
+  ],
+  "outputs": [
+    "microsoft-azure-sql-database-databases-api-openapi.yml",
+    "microsoft-azure-sql-database-elasticpools-api-openapi.yml",
+    "microsoft-azure-sql-database-failovergroups-api-openapi.yml",
+    "microsoft-azure-sql-database-firewallrules-api-openapi.yml",
+    "microsoft-azure-sql-database-servers-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
