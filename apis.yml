@@ -4,6 +4,18 @@ name: Azure SQL Database
 description: >-
   Azure SQL Database is a fully managed relational database service built on the SQL Server engine with built-in
   intelligence, high availability, and elastic scaling.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: freemium
   onboarding: self-serve
