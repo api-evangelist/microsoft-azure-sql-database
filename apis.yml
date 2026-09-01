@@ -89,7 +89,7 @@ apis:
   humanURL: https://learn.microsoft.com/en-us/rest/api/sql/
   baseURL: https://management.azure.com/
   tags:
-  - FirewallRules
+  - Firewall Rules
   tags_raw:
   - FirewallRules
   properties:
