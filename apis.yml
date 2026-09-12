@@ -1,6 +1,7 @@
 aid: microsoft-azure-sql-database
-url: https://raw.githubusercontent.com/api-evangelist/microsoft-azure-sql-database/refs/heads/main/apis.yml
+url: https://learn.microsoft.com/en-us/azure/azure-sql/database/
 name: Azure SQL Database
+x-parent: microsoft-azure
 description: >-
   Azure SQL Database is a fully managed relational database service built on the SQL Server engine with built-in
   intelligence, high availability, and elastic scaling.
