@@ -52,7 +52,8 @@ apis:
   - type: Documentation
     url: https://learn.microsoft.com/en-us/rest/api/sql/
   - type: Authentication
-    url: https://learn.microsoft.com/en-us/azure/active-directory/develop/authentication-flows-app-scenarios
+    url: >-
+      https://learn.microsoft.com/en-us/azure/active-directory/develop/authentication-flows-app-scenarios
 - aid: microsoft-azure-sql-database:microsoft-azure-sql-database-elasticpools-api
   name: Azure SQL Database ElasticPools API
   description: The ElasticPools API from Azure SQL Database — 1 operation(s) for elasticpools.
@@ -66,7 +67,8 @@ apis:
   - type: Documentation
     url: https://learn.microsoft.com/en-us/rest/api/sql/
   - type: Authentication
-    url: https://learn.microsoft.com/en-us/azure/active-directory/develop/authentication-flows-app-scenarios
+    url: >-
+      https://learn.microsoft.com/en-us/azure/active-directory/develop/authentication-flows-app-scenarios
 - aid: microsoft-azure-sql-database:microsoft-azure-sql-database-failovergroups-api
   name: Azure SQL Database FailoverGroups API
   description: The FailoverGroups API from Azure SQL Database — 1 operation(s) for failovergroups.
@@ -80,23 +82,8 @@ apis:
   - type: Documentation
     url: https://learn.microsoft.com/en-us/rest/api/sql/
   - type: Authentication
-    url: https://learn.microsoft.com/en-us/azure/active-directory/develop/authentication-flows-app-scenarios
-- aid: microsoft-azure-sql-database:microsoft-azure-sql-database-firewallrules-api
-  name: Azure SQL Database FirewallRules API
-  description: The FirewallRules API from Azure SQL Database — 2 operation(s) for firewallrules.
-  humanURL: https://learn.microsoft.com/en-us/rest/api/sql/
-  baseURL: https://management.azure.com/
-  tags:
-  - Firewall Rules
-  tags_raw:
-  - FirewallRules
-  properties:
-  - type: OpenAPI
-    url: openapi/microsoft-azure-sql-database-firewallrules-api-openapi.yml
-  - type: Documentation
-    url: https://learn.microsoft.com/en-us/rest/api/sql/
-  - type: Authentication
-    url: https://learn.microsoft.com/en-us/azure/active-directory/develop/authentication-flows-app-scenarios
+    url: >-
+      https://learn.microsoft.com/en-us/azure/active-directory/develop/authentication-flows-app-scenarios
 - aid: microsoft-azure-sql-database:microsoft-azure-sql-database-servers-api
   name: Azure SQL Database Servers API
   description: The Servers API from Azure SQL Database — 3 operation(s) for servers.
@@ -110,7 +97,23 @@ apis:
   - type: Documentation
     url: https://learn.microsoft.com/en-us/rest/api/sql/
   - type: Authentication
-    url: https://learn.microsoft.com/en-us/azure/active-directory/develop/authentication-flows-app-scenarios
+    url: >-
+      https://learn.microsoft.com/en-us/azure/active-directory/develop/authentication-flows-app-scenarios
+- aid: microsoft-azure-sql-database:microsoft-azure-sql-database-firewall-rules-api
+  name: Azure SQL Database Firewall Rules API
+  description: The Firewall Rules API from Azure SQL Database — 2 operation(s) for firewall rules.
+  humanURL: https://learn.microsoft.com/en-us/rest/api/sql/
+  baseURL: https://management.azure.com/
+  tags:
+  - Firewall Rules
+  properties:
+  - type: OpenAPI
+    url: openapi/microsoft-azure-sql-database-firewall-rules-api-openapi.yml
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/rest/api/sql/
+  - type: Authentication
+    url: >-
+      https://learn.microsoft.com/en-us/azure/active-directory/develop/authentication-flows-app-scenarios
 common:
 - type: Website
   url: https://microsoft.com
