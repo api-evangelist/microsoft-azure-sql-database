@@ -45,6 +45,8 @@ apis:
   humanURL: https://learn.microsoft.com/en-us/rest/api/sql/
   baseURL: https://management.azure.com/
   tags:
+  - Database
+  tags_raw:
   - Databases
   properties:
   - type: OpenAPI
