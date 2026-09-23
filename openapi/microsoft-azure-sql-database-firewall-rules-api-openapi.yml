@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Azure SQL Database REST Databases FirewallRules API
+  title: Azure SQL Database REST Firewall Rules API
   description: Minimal OpenAPI definition for the Azure SQL Database management REST API (via Azure Resource Manager) covering servers, databases, elastic pools, firewall rules, and failover groups.
   version: '2021-11-01'
   x-generated-from: https://learn.microsoft.com/en-us/rest/api/sql/
@@ -11,7 +11,7 @@ servers:
 security:
 - bearerAuth: []
 tags:
-- name: FirewallRules
+- name: Firewall Rules
 paths:
   ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/firewallRules
   : parameters:
@@ -21,7 +21,7 @@ paths:
     - $ref: '#/components/parameters/ApiVersion'
     get:
       tags:
-      - FirewallRules
+      - Firewall Rules
       summary: List firewall rules by server
       operationId: listFirewallRulesByServer
       responses:
@@ -44,7 +44,7 @@ paths:
     - $ref: '#/components/parameters/ApiVersion'
     put:
       tags:
-      - FirewallRules
+      - Firewall Rules
       summary: Create or update firewall rule
       operationId: createOrUpdateFirewallRule
       requestBody:
@@ -60,7 +60,7 @@ paths:
           description: Created
     delete:
       tags:
-      - FirewallRules
+      - Firewall Rules
       summary: Delete firewall rule
       operationId: deleteFirewallRule
       responses:
@@ -69,19 +69,14 @@ paths:
         '204':
           description: No Content
 components:
-  schemas:
-    GenericList:
-      type: object
-      properties:
-        value:
-          type: array
-          items:
-            $ref: '#/components/schemas/GenericObject'
-      additionalProperties: true
-    GenericObject:
-      type: object
-      additionalProperties: true
   parameters:
+    ApiVersion:
+      in: query
+      name: api-version
+      required: true
+      schema:
+        type: string
+        default: '2021-11-01'
     ResourceGroupName:
       in: path
       name: resourceGroupName
@@ -94,19 +89,24 @@ components:
       required: true
       schema:
         type: string
-    ApiVersion:
-      in: query
-      name: api-version
-      required: true
-      schema:
-        type: string
-        default: '2021-11-01'
     SubscriptionId:
       in: path
       name: subscriptionId
       required: true
       schema:
         type: string
+  schemas:
+    GenericObject:
+      type: object
+      additionalProperties: true
+    GenericList:
+      type: object
+      properties:
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/GenericObject'
+      additionalProperties: true
   securitySchemes:
     bearerAuth:
       type: http

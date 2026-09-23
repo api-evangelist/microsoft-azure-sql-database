@@ -1,4 +1,4 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   title: Azure SQL Database REST Databases API
   description: Minimal OpenAPI definition for the Azure SQL Database management REST API (via Azure Resource Manager) covering servers, databases, elastic pools, firewall rules, and failover groups.
@@ -91,19 +91,20 @@ paths:
         '204':
           description: No Content
 components:
-  schemas:
-    GenericList:
-      type: object
-      properties:
-        value:
-          type: array
-          items:
-            $ref: '#/components/schemas/GenericObject'
-      additionalProperties: true
-    GenericObject:
-      type: object
-      additionalProperties: true
   parameters:
+    DatabaseName:
+      in: path
+      name: databaseName
+      required: true
+      schema:
+        type: string
+    ApiVersion:
+      in: query
+      name: api-version
+      required: true
+      schema:
+        type: string
+        default: '2021-11-01'
     ResourceGroupName:
       in: path
       name: resourceGroupName
@@ -116,25 +117,24 @@ components:
       required: true
       schema:
         type: string
-    ApiVersion:
-      in: query
-      name: api-version
-      required: true
-      schema:
-        type: string
-        default: '2021-11-01'
-    DatabaseName:
-      in: path
-      name: databaseName
-      required: true
-      schema:
-        type: string
     SubscriptionId:
       in: path
       name: subscriptionId
       required: true
       schema:
         type: string
+  schemas:
+    GenericObject:
+      type: object
+      additionalProperties: true
+    GenericList:
+      type: object
+      properties:
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/GenericObject'
+      additionalProperties: true
   securitySchemes:
     bearerAuth:
       type: http
