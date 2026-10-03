@@ -33,9 +33,15 @@ paths:
                 $ref: '#/components/schemas/GenericList'
 components:
   parameters:
-    SubscriptionId:
+    ServerName:
       in: path
-      name: subscriptionId
+      name: serverName
+      required: true
+      schema:
+        type: string
+    ResourceGroupName:
+      in: path
+      name: resourceGroupName
       required: true
       schema:
         type: string
@@ -46,19 +52,16 @@ components:
       schema:
         type: string
         default: '2021-11-01'
-    ResourceGroupName:
+    SubscriptionId:
       in: path
-      name: resourceGroupName
-      required: true
-      schema:
-        type: string
-    ServerName:
-      in: path
-      name: serverName
+      name: subscriptionId
       required: true
       schema:
         type: string
   schemas:
+    GenericObject:
+      type: object
+      additionalProperties: true
     GenericList:
       type: object
       properties:
@@ -66,9 +69,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/GenericObject'
-      additionalProperties: true
-    GenericObject:
-      type: object
       additionalProperties: true
   securitySchemes:
     bearerAuth:
