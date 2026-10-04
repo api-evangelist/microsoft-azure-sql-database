@@ -117,6 +117,9 @@ apis:
     url: >-
       https://learn.microsoft.com/en-us/azure/active-directory/develop/authentication-flows-app-scenarios
 common:
+- type: CapabilityMap
+  url: capabilities/microsoft-azure-sql-database-capability-edges.yml
+  name: Azure SQL Database Business Capability Map
 - type: Website
   url: https://microsoft.com
 - type: AgenticAccess

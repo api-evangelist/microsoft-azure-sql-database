@@ -1,0 +1,33 @@
+slug: microsoft-azure-sql-database
+provider: Azure SQL Database
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Software & Technology
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 2
+edges:
+- tag: Databases
+  spec_file: microsoft-azure-sql-database-databases-api-openapi.yml
+  capability_id: BC-600.50
+  capability_id_l1: BC-600
+  capability_name: IT Infrastructure Management
+  confidence: 0.75
+  evidence: '"Create or update database", "Delete database" on "providers/Microsoft.Sql/servers/{serverName}/databases"'
+  reason: Lifecycle provisioning of managed cloud database resources via Azure Resource Manager is cloud
+    infrastructure management, not business data governance. The operations are pure resource CRUD.
+- tag: Servers
+  spec_file: microsoft-azure-sql-database-servers-api-openapi.yml
+  capability_id: BC-600.50
+  capability_id_l1: BC-600
+  capability_name: IT Infrastructure Management
+  confidence: 0.75
+  evidence: '"Create or update server", "List servers in subscription", "Delete server"'
+  reason: Provisioning and lifecycle of logical SQL server resources in a cloud subscription is cloud/compute
+    infrastructure management.
