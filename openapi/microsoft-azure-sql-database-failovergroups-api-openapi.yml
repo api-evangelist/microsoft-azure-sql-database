@@ -33,15 +33,9 @@ paths:
                 $ref: '#/components/schemas/GenericList'
 components:
   parameters:
-    ServerName:
+    SubscriptionId:
       in: path
-      name: serverName
-      required: true
-      schema:
-        type: string
-    ResourceGroupName:
-      in: path
-      name: resourceGroupName
+      name: subscriptionId
       required: true
       schema:
         type: string
@@ -52,9 +46,15 @@ components:
       schema:
         type: string
         default: '2021-11-01'
-    SubscriptionId:
+    ServerName:
       in: path
-      name: subscriptionId
+      name: serverName
+      required: true
+      schema:
+        type: string
+    ResourceGroupName:
+      in: path
+      name: resourceGroupName
       required: true
       schema:
         type: string

@@ -92,6 +92,19 @@ paths:
           description: No Content
 components:
   parameters:
+    SubscriptionId:
+      in: path
+      name: subscriptionId
+      required: true
+      schema:
+        type: string
+    ApiVersion:
+      in: query
+      name: api-version
+      required: true
+      schema:
+        type: string
+        default: '2021-11-01'
     ServerName:
       in: path
       name: serverName
@@ -107,19 +120,6 @@ components:
     DatabaseName:
       in: path
       name: databaseName
-      required: true
-      schema:
-        type: string
-    ApiVersion:
-      in: query
-      name: api-version
-      required: true
-      schema:
-        type: string
-        default: '2021-11-01'
-    SubscriptionId:
-      in: path
-      name: subscriptionId
       required: true
       schema:
         type: string
